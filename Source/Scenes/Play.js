@@ -11,6 +11,8 @@ class Play extends Phaser.Scene{
         this.load.image("jordan1", "./Assets/jordan1.png");
         this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
+        this.load.spritesheet("explosion", "./Assets/supreme.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        
 
     }
 
@@ -42,6 +44,16 @@ class Play extends Phaser.Scene{
         keyF= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyLEFT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+        //animation configuration
+        
+        this.anims.create({
+
+            key: "explode",
+            frames: this.anims.generateFrameNumbers("explosion", {start: 0, end: 4, first: 0}), frameRate: 30
+
+        });
+        
       
 
         
@@ -56,6 +68,47 @@ class Play extends Phaser.Scene{
         this.yeezy01.update();
         this.yeezy02.update();
         this.yeezy03.update();
+
+        //check collisions
+        if(this.checkCollisions(this.blingHand, this.yeezy03)){
+            this.blingHand.reset();
+            this.shoeExplode(this.yeezy03);
+        }
+
+        if(this.checkCollisions(this.blingHand, this.yeezy02)){
+            this.blingHand.reset();
+            this.shoeExplode(this.yeezy02);
+        }
+
+        if(this.checkCollisions(this.blingHand, this.yeezy01)){
+            this.blingHand.reset();
+            this.shoeExplode(this.yeezy01);
+        }
+
+
+    }
+
+    checkCollisions(finger,shoe){
+        if(finger.x < shoe.x + shoe.width && finger.x + finger.width > shoe.x && finger.y < shoe.y + shoe.height && 
+            finger.height + finger.y > shoe.y){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+
+    }
+
+    shoeExplode(shoe){
+        shoe.alpha = 0; //temporarily hide the ship
+        let boom = this.add.sprite(shoe.x,shoe.y, "explosion").setOrigin(0,0); //create explosion sprite at ship's position
+        boom.anims.play("explode"); //play the explode animation
+        boom.on("animationcomplete", () => { //callback after animation completes
+            shoe.reset(); //reset the postition of the ship
+            shoe.alpha =1; //make ship visible again
+            boom.destroy(); //kill animation (remove sprite)
+        });
     }
 
 }
