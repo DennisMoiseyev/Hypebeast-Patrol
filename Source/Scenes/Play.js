@@ -42,6 +42,7 @@ class Play extends Phaser.Scene{
         keyF= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyLEFT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+      
 
         
     }
