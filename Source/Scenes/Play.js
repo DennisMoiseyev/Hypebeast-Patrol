@@ -11,7 +11,7 @@ class Play extends Phaser.Scene{
         this.load.image("jordan1", "./Assets/jordan1.png");
         this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
-        this.load.spritesheet("explosion", "./Assets/supreme.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         
 
     }
@@ -50,7 +50,7 @@ class Play extends Phaser.Scene{
         this.anims.create({
 
             key: "explode",
-            frames: this.anims.generateFrameNumbers("explosion", {start: 0, end: 4, first: 0}), frameRate: 30
+            frames: this.anims.generateFrameNumbers("explosion", {start: 0, end: 9, first: 0}), frameRate: 30
 
         });
         
@@ -102,7 +102,7 @@ class Play extends Phaser.Scene{
 
     shoeExplode(shoe){
         shoe.alpha = 0; //temporarily hide the ship
-        let boom = this.add.sprite(shoe.x,shoe.y, "explosion").setOrigin(0,0); //create explosion sprite at ship's position
+        let boom = this.add.sprite(shoe.x, shoe.y, "explosion").setOrigin(0,0); //create explosion sprite at ship's position
         boom.anims.play("explode"); //play the explode animation
         boom.on("animationcomplete", () => { //callback after animation completes
             shoe.reset(); //reset the postition of the ship
