@@ -5,7 +5,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
 
         scene.add.existing(this);//add object to the existing scene, displayList, updateList
         this.isFiring = false;  //track rocket's firing stats
-        //this.sfxRocket= scene.sound.add("sfx_rocket"); //add rocket sound effects
+        this.sfxHand= scene.sound.add("bling"); //add firing sound effects
     }
 
     update(){
@@ -24,7 +24,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
         //waits for player to take finger off the button
         if(Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring){
             this.isFiring = true;
-            //this.sfxRocket.play(); //play rocket sound effects
+            this.sfxHand.play(); //play rocket sound effects
         }
 
         // if fired, move up

@@ -86,10 +86,10 @@ class Play extends Phaser.Scene{
             fixedWidth: 100
         }
 
-        this.scoreLeft= this.add.text(10, 54, this.p1score, scoreConfig); 
+        this.scoreLeft= this.add.text(10,  35, this.p1score, scoreConfig); 
         this.gameOver= false;
 
-        this.highScoreText= this.add.text(430, 60, "High Score: " + this.p1highScore, {
+        this.highScoreText= this.add.text(433, 35, "High Score: " + this.p1highScore, {
             fontFamily: "Helvetica",
             fontSize: "28px",
             fill: "white",
@@ -165,6 +165,7 @@ class Play extends Phaser.Scene{
             shoe.reset(); //reset the postition of the ship
             shoe.alpha =1; //make ship visible again
             boom.destroy(); //kill animation (remove sprite)
+            this.sound.play("money");
         });
         
          //score increment and repaint

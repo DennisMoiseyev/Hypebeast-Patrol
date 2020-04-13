@@ -6,7 +6,9 @@ class Menu extends Phaser.Scene {
     preload(){
         this.load.image("hypebeastPatrol", "./Assets/jordan1.png");
         this.load.image("yeezy", "./Assets/yeezy.png");
-        this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
+        this.load.audio("clap", "./Assets/hip-hop-clap.wav");
+        this.load.audio("money", "./Assets/chaching.wav");
+        this.load.audio("bling", "./Assets/Bling.wav");
 
 
     }
@@ -65,7 +67,7 @@ class Menu extends Phaser.Scene {
                yeezy_twoSpeed: 3,
                 gameTimer: 60000
             }
-           
+            this.sound.play("clap");
             this.scene.start("playScene"); //starts the next scene
             
 
@@ -77,7 +79,7 @@ class Menu extends Phaser.Scene {
                 yeezy_twoSpeed: 6,
                  gameTimer: 60000
              }
-        
+            this.sound.play("clap");
             this.scene.start("playScene"); //starts the next scene
 
         }
