@@ -11,6 +11,7 @@ class Play extends Phaser.Scene{
         this.load.image("jordan1", "./Assets/jordan1.png");
         this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
+        this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
         this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         
 
@@ -30,6 +31,19 @@ class Play extends Phaser.Scene{
         this.add.text(5, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         this.add.text(555, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         this.add.text(555, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
+
+        this.bgMusic= this.sound.add("outsiders");
+        let musicConfig= {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        }
+        this.bgMusic.play(musicConfig);
+    
 
         //create bling hand
         this.blingHand = new BlingHand(this, game.config.width/2, 431,"hand").setScale(0.5,0.5).setOrigin(0,0);
@@ -54,20 +68,63 @@ class Play extends Phaser.Scene{
 
         });
         
-      
+        //score
+        this.p1score= 0;
+        this.p1highScore=0;
 
+        //score display
+        let scoreConfig = {
+            fontFamily: "Helvetica",
+            fontSize: "28px",
+            backgroundColor: "#FF0000",
+            color: "#FFFFFF",
+            align: "right",
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+
+        this.scoreLeft= this.add.text(10, 54, this.p1score, scoreConfig); 
+        this.gameOver= false;
+
+        this.highScoreText= this.add.text(430, 60, "High Score: " + this.p1highScore, {
+            fontFamily: "Helvetica",
+            fontSize: "28px",
+            fill: "white",
+            backgroundColor: "#FF0000"
+        });
+
+        //60 Second Play Clock
+        scoreConfig.fixedWidth= 0;
+        this.clock= this.time.delayedCall(game.settings.gameTimer, () => {
+            this.add.text(game.config.width/2, game.config.height/2, "GAME OVER", scoreConfig).setOrigin(0.5);  
+            this.add.text(game.config.width/2, game.config.height/2 +64, "(F)ire to Restart or ← for Menu", scoreConfig).setOrigin(0.5); 
+            this.gameOver= true, this.bgMusic.stop(musicConfig);
+        }, null, this);
         
     }
 
     update(){
+        //check key input for restart
+        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyF)){
+            this.scene.restart();
+    
+        }
+        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)){
+            this.scene.start("menuScene"); 
+
+        }
         //scroll the Jordans
         this.jordanwall.tilePositionX -= 6;
+        if(!this.gameOver){
 
         this.blingHand.update();
-
         this.yeezy01.update();
         this.yeezy02.update();
         this.yeezy03.update();
+        }
 
         //check collisions
         if(this.checkCollisions(this.blingHand, this.yeezy03)){
@@ -109,6 +166,19 @@ class Play extends Phaser.Scene{
             shoe.alpha =1; //make ship visible again
             boom.destroy(); //kill animation (remove sprite)
         });
+        
+         //score increment and repaint
+         this.p1score += shoe.points;
+         this.scoreLeft.text = this.p1score;
+        //High score tracker
+        this.highScoreText.text= "High Score: " + localStorage.getItem("p1highScore");
+        {
+            if(this.p1score > localStorage.getItem("p1highScore")){
+                localStorage.setItem("p1highScore", this.p1score);
+            }
+        }
+       
+
     }
 
 }

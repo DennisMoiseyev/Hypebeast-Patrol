@@ -10,7 +10,7 @@ class Yeezy extends Phaser.GameObjects.Sprite{
 
     update(){
         //update spaceship left
-        this.x -= game.settings.yeezy_twoSpeed;
+        this.x -= game.settings.yeezy_twoSpeed
         //wraparound screen bounds
         if(this.x <= 0 -this.width){
             this.x = game.config.width;

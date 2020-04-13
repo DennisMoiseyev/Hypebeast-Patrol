@@ -19,6 +19,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
             }
         }
 
+        
         //fire button (Not Spacebar)
         //waits for player to take finger off the button
         if(Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring){
@@ -28,7 +29,12 @@ class BlingHand extends Phaser.GameObjects.Sprite{
 
         // if fired, move up
         if(this.isFiring && this.y >= 108){
-            this.y -=2;
+            this.y -=3;
+            if(keyLEFT.isDown && this.x >=47){
+                this.x -=3;
+            } else if(keyRIGHT.isDown && this.x <= 578){
+                this.x +=2;
+            }
         }
 
         //reset on miss
