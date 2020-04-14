@@ -9,7 +9,7 @@ class Play extends Phaser.Scene{
         this.load.image("fire", "./Assets/fire.png");
         this.load.image("jordanwall", "./Assets/jordanwall.PNG");
         this.load.image("jordan1", "./Assets/jordan1.png");
-        this.load.image("hand", "/.Assets/BlingHand.png");
+        this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
         this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
         this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
