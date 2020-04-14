@@ -6,6 +6,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
         scene.add.existing(this);//add object to the existing scene, displayList, updateList
         this.isFiring = false;  //track rocket's firing stats
         this.sfxHand= scene.sound.add("bling"); //add firing sound effects
+        
     }
 
     update(){

@@ -9,7 +9,7 @@ class Play extends Phaser.Scene{
         this.load.image("fire", "./Assets/fire.png");
         this.load.image("jordanwall", "./Assets/jordanwall.PNG");
         this.load.image("jordan1", "./Assets/jordan1.png");
-        this.load.image("hand", "./Assets/BlingHand.png");
+        //this.load.image("hand", "./Assets/blinghand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
         this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
         this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -31,6 +31,10 @@ class Play extends Phaser.Scene{
         this.add.text(5, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         this.add.text(555, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         this.add.text(555, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
+        
+        
+        this.add.text(278, 54, "🔥🔥FIRE🔥🔥", { fontFamily: "Roboto Condensed", fontSize: "32px", backgroundColor: "#FF0000"}).setOrigin(0.5);
+        
 
         this.bgMusic= this.sound.add("outsiders");
         let musicConfig= {
@@ -50,7 +54,7 @@ class Play extends Phaser.Scene{
 
 
         //createshoes
-        this.yeezy01 = new Yeezy(this, game.config.width +200, 40, "yeezy_two", 0, 60).setOrigin(0,0);
+        this.yeezy01 = new Yeezy(this, game.config.width +200, 44, "yeezy_two", 0, 60).setOrigin(0,0);
         this.yeezy02 = new Yeezy(this, game.config.width +96, 110, "yeezy_two", 0, 20).setOrigin(0,0);
         this.yeezy03 = new Yeezy(this, game.config.width, 200, "yeezy_two", 0, 10).setOrigin(0,0);
 
@@ -60,7 +64,6 @@ class Play extends Phaser.Scene{
         keyRIGHT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
         //animation configuration
-        
         this.anims.create({
 
             key: "explode",
