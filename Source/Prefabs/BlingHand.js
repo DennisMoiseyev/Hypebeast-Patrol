@@ -13,7 +13,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
 
         //left/right movement
         if(!this.isFiring){
-            if(keyLEFT.isDown && this.x >=47){
+            if(keyLEFT.isDown && this.x >=8){
                 this.x -=3;
             } else if(keyRIGHT.isDown && this.x <= 578){
                 this.x +=2;
@@ -31,7 +31,7 @@ class BlingHand extends Phaser.GameObjects.Sprite{
         // if fired, move up
         if(this.isFiring && this.y >= 108){
             this.y -=3;
-            if(keyLEFT.isDown && this.x >=47){
+            if(keyLEFT.isDown && this.x >=10){
                 this.x -=3;
             } else if(keyRIGHT.isDown && this.x <= 578){
                 this.x +=2;
@@ -41,13 +41,13 @@ class BlingHand extends Phaser.GameObjects.Sprite{
         //reset on miss
         if(this.y <=108){
             this.isFiring = false;
-            this.y = 431;
+            this.y = 420;
         }
     }
 
     reset(){
         //reset rocket to the ground
         this.isFiring = false;
-        this.y = 431;
+        this.y = 420;
     }
 }

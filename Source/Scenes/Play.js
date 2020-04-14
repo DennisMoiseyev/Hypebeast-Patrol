@@ -9,7 +9,7 @@ class Play extends Phaser.Scene{
         this.load.image("fire", "./Assets/fire.png");
         this.load.image("jordanwall", "./Assets/jordanwall.PNG");
         this.load.image("jordan1", "./Assets/jordan1.png");
-        this.load.image("hand", "/.Assets/BlingHand.png");
+        this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
         this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
         this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -33,7 +33,7 @@ class Play extends Phaser.Scene{
         this.add.text(555, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         
         
-        this.add.text(278, 54, "🔥🔥FIRE🔥🔥", { fontFamily: "Roboto Condensed", fontSize: "32px", backgroundColor: "#FF0000"}).setOrigin(0.5);
+        this.setupFire= this.add.text(278, 54, "🔥🔥FIRE🔥🔥", { fontFamily: "Roboto Condensed", fontSize: "32px", backgroundColor: "#FF0000"}).setOrigin(0.5);
         
 
         this.bgMusic= this.sound.add("outsiders");
@@ -50,7 +50,7 @@ class Play extends Phaser.Scene{
     
 
         //create bling hand
-        this.blingHand = new BlingHand(this, game.config.width/2, 431,"hand").setScale(0.5,0.5).setOrigin(0,0);
+        this.blingHand = new BlingHand(this, game.config.width/2, 400,"hand").setScale(0.5,0.5).setOrigin(0,0);
 
 
         //createshoes
@@ -106,6 +106,8 @@ class Play extends Phaser.Scene{
             this.add.text(game.config.width/2, game.config.height/2 +64, "(F)ire to Restart or ← for Menu", scoreConfig).setOrigin(0.5); 
             this.gameOver= true, this.bgMusic.stop(musicConfig);
         }, null, this);
+
+       
         
     }
 
@@ -127,6 +129,7 @@ class Play extends Phaser.Scene{
         this.yeezy01.update();
         this.yeezy02.update();
         this.yeezy03.update();
+        
         }
 
         //check collisions
@@ -138,13 +141,15 @@ class Play extends Phaser.Scene{
         if(this.checkCollisions(this.blingHand, this.yeezy02)){
             this.blingHand.reset();
             this.shoeExplode(this.yeezy02);
+           
         }
 
         if(this.checkCollisions(this.blingHand, this.yeezy01)){
             this.blingHand.reset();
             this.shoeExplode(this.yeezy01);
+            
         }
-
+       
 
     }
 
@@ -169,20 +174,23 @@ class Play extends Phaser.Scene{
             shoe.alpha =1; //make ship visible again
             boom.destroy(); //kill animation (remove sprite)
             this.sound.play("money");
+
         });
-        
-         //score increment and repaint
-         this.p1score += shoe.points;
-         this.scoreLeft.text = this.p1score;
+
+        //score increment and repaint
+        this.p1score += shoe.points;
+        this.scoreLeft.text = this.p1score;
         //High score tracker
         this.highScoreText.text= "High Score: " + localStorage.getItem("p1highScore");
         {
             if(this.p1score > localStorage.getItem("p1highScore")){
+                
                 localStorage.setItem("p1highScore", this.p1score);
-            }
-        }
+       }
+   }
        
 
     }
+    
 
 }
