@@ -113,7 +113,6 @@ class Play extends Phaser.Scene{
         this.delayText= this.add.text(245, 18);
         
 
-       
         
     }
 
@@ -131,7 +130,10 @@ class Play extends Phaser.Scene{
         this.jordanwall.tilePositionX -= 6;
         
         //Display the play clock
-        this.delayText.setText('Time: ' + this.clock.getProgress().toString().substr(0, 4));
+        //this.delayText.setText('Time: ' + this.clock.getElapsedSeconds().toString().substr(0, 4));
+        this.delayText.setText('Time: ' + this.clock.getElapsedSeconds().toString().substr(0, 4) + "s");
+        
+        
         
         
         if(!this.gameOver){
@@ -174,6 +176,7 @@ class Play extends Phaser.Scene{
 
 
     }
+
 
     shoeExplode(shoe){
         shoe.alpha = 0; //temporarily hide the ship
