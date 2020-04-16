@@ -20,6 +20,8 @@ class Play extends Phaser.Scene{
     create(){
         //place tile sprite
         this.jordanwall = this.add.tileSprite(0, 0, 640, 480, "jordanwall").setOrigin(0,0); 
+        
+        
 
         //Red Supreme Hypebeast Borders
         this.add.rectangle(5, 5, 630, 32, 0xFF0000).setOrigin(0,0);
@@ -51,6 +53,7 @@ class Play extends Phaser.Scene{
 
         //create bling hand
         this.blingHand = new BlingHand(this, game.config.width/2, 400,"hand").setScale(0.5,0.5).setOrigin(0,0);
+        
 
 
         //createshoes
@@ -107,6 +110,9 @@ class Play extends Phaser.Scene{
             this.gameOver= true, this.bgMusic.stop(musicConfig);
         }, null, this);
 
+        this.delayText= this.add.text(245, 18);
+        
+
        
         
     }
@@ -123,6 +129,10 @@ class Play extends Phaser.Scene{
         }
         //scroll the Jordans
         this.jordanwall.tilePositionX -= 6;
+        
+        this.delayText.setText('Time: ' + this.clock.getProgress().toString().substr(0, 4));
+        
+        
         if(!this.gameOver){
 
         this.blingHand.update();
