@@ -34,7 +34,7 @@ class Menu extends Phaser.Scene {
             fontSize: "32px",
             backgroundColor: "#006400",
             align: "right",
-            color: "#FFFFFF",
+            color: "#000",
             padding: {
                 top: 5,
                 bottom: 5,
@@ -52,7 +52,7 @@ class Menu extends Phaser.Scene {
         menuConfig.backgroundColor = "#FF0000";
         this.add.text(centerX, 220, "Use ←→ arrows to move & (F) to Fire", menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = "#006400";
-        menuConfig.color= "#FFFFFF";
+        menuConfig.color= "#000";
         this.add.text(centerX, 250 + textSpacer, " ← for Weak Mode or → for Lit Mode", menuConfig).setOrigin(0.5);
 
         keyLEFT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
