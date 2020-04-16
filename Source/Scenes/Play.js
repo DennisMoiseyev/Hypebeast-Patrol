@@ -52,7 +52,7 @@ class Play extends Phaser.Scene{
     
 
         //create bling hand
-        this.blingHand = new BlingHand(this, game.config.width/2, 400,"hand").setScale(0.5,0.5).setOrigin(0,0);
+        this.blingHand = new BlingHand(this, game.config.width/2, 420,"hand").setScale(0.5,0.5).setOrigin(0,0);
         
 
 
@@ -76,7 +76,7 @@ class Play extends Phaser.Scene{
         
         //score
         this.p1score= 0;
-        this.p1highScore=0;
+        this.p1highScore= 0;
 
         //score display
         let scoreConfig = {
@@ -104,7 +104,7 @@ class Play extends Phaser.Scene{
 
         //60 Second Play Clock
         scoreConfig.fixedWidth= 0;
-        this.clock= this.time.delayedCall(game.settings.gameTimer, () => {
+        this.clock= this.time.delayedCall(Math.floor(game.settings.gameTimer), () => {
             this.add.text(game.config.width/2, game.config.height/2, "GAME OVER", scoreConfig).setOrigin(0.5);  
             this.add.text(game.config.width/2, game.config.height/2 +64, "(F)ire to Restart or ← for Menu", scoreConfig).setOrigin(0.5); 
             this.gameOver= true, this.bgMusic.stop(musicConfig);
@@ -130,6 +130,7 @@ class Play extends Phaser.Scene{
         //scroll the Jordans
         this.jordanwall.tilePositionX -= 6;
         
+        //Display the play clock
         this.delayText.setText('Time: ' + this.clock.getProgress().toString().substr(0, 4));
         
         
@@ -159,7 +160,6 @@ class Play extends Phaser.Scene{
             this.shoeExplode(this.yeezy01);
             
         }
-       
 
     }
 
