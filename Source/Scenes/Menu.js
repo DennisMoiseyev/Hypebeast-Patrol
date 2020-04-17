@@ -16,8 +16,16 @@ class Menu extends Phaser.Scene {
     create(){
         
         //displays menu sprite
+        this.jordan1_01= this.add.sprite(200, 455, "hypebeastPatrol").setOrigin(0,0);
+        this.jordan1_02= this.add.sprite(12, 455, "hypebeastPatrol").setOrigin(0,0);
+        this.jordan1_03= this.add.sprite(100, 455, "hypebeastPatrol").setOrigin(0,0);
+        this.jordan1_04= this.add.sprite(350, 455, "hypebeastPatrol").setOrigin(0,0);
+        this.jordan1_05= this.add.sprite(200, 455, "hypebeastPatrol").setOrigin(0,0);
+        this.jordan1_06= this.add.sprite(12, 455, "hypebeastPatrol").setOrigin(0,0);
         this.titleScreen= this.add.tileSprite(0, 0, 640, 480, "hypebeastPatrol").setOrigin(0,0);
         this.titleScreen= this.add.tileSprite(0, 0, 640, 480, "yeezy").setOrigin(0,0);
+       
+
         this.add.rectangle(0, 0, 640, 32, 0xFF0000).setOrigin(0,0);
         this.add.rectangle(12, 455, 640, 32, 0xFF0000).setOrigin(0,0);
         this.add.rectangle(0, 15, 32, 470, 0xFF0000).setOrigin(0,0);
@@ -64,6 +72,12 @@ class Menu extends Phaser.Scene {
      update(){
 
         this.titleScreen.tilePositionX +=4;
+        this.jordan1_01.angle += 0.5;
+        this.jordan1_02.angle += 0.5;
+        this.jordan1_03.angle += 0.5;
+        this.jordan1_04.angle -= 0.5;
+        this.jordan1_05.angle -= 0.5;
+        this.jordan1_06.angle -= 0.5;
 
         if(Phaser.Input.Keyboard.JustDown(keyLEFT)){
             game.settings= {
