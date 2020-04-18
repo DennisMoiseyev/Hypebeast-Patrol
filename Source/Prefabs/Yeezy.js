@@ -4,12 +4,12 @@ class Yeezy extends Phaser.GameObjects.Sprite{
         super(scene, x, y, texture, frame);
 
         scene.add.existing(this);//add object to the existing scene, displayList, updateList
-        this.points = pointValue;
+        this.points = pointValue;//assign point value to Yeezy object
         
     }
 
     update(){
-        //update spaceship left
+        //update yeezy left
         this.x -= game.settings.yeezy_twoSpeed
     
         //wraparound screen bounds
