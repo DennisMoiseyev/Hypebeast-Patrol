@@ -181,16 +181,16 @@ class Play extends Phaser.Scene{
 
     }
 
-    //shoe esplosion function
+    //shoe explosion function
     shoeExplode(shoe){
         shoe.alpha = 0; //temporarily hide the ship
-        let boom = this.add.sprite(shoe.x, shoe.y, "explosion").setOrigin(0,0); //create explosion sprite at ship's position
+        let boom = this.add.sprite(shoe.x, shoe.y, "explosion").setOrigin(0,0); //create explosion sprite at yeezy's position
         boom.anims.play("explode"); //play the explode animation
         boom.on("animationcomplete", () => { //callback after animation completes
             shoe.reset(); //reset the postition of the ship
-            shoe.alpha =1; //make ship visible again
+            shoe.alpha =1; //make yeezy visible again
             boom.destroy(); //kill animation (remove sprite)
-            this.sound.play("money");
+            this.sound.play("money");//play satisfying cha-ching sound effect
 
         });
 
