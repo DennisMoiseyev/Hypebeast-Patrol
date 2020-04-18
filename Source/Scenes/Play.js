@@ -14,6 +14,7 @@ class Play extends Phaser.Scene{
         this.load.image("hand", "./Assets/BlingHand.png");
         this.load.audio("jumpman", "./Assets/hip hop.mp3");
         this.load.audio("outsiders", "./Assets/ES_Stories From the Street - Aesyme.mp3");
+        this.load.image("bape", "./Assets/Bape.png");
         //redesign of Nathan's tutorial explosion to match color pallette of yeezys 
         this.load.spritesheet("explosion", "./Assets/yeezplosion.png", {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         
@@ -110,6 +111,8 @@ class Play extends Phaser.Scene{
         this.clock= this.time.delayedCall(Math.floor(game.settings.gameTimer), () => {
             this.add.text(game.config.width/2, game.config.height/2, "GAME OVER", scoreConfig).setOrigin(0.5);  
             this.add.text(game.config.width/2, game.config.height/2 +64, "(F)ire to Restart or ← for Menu", scoreConfig).setOrigin(0.5); 
+            this.add.image(105, 400, "bape");
+            this.instructions.destroy();
             this.gameOver= true, this.bgMusic.stop(musicConfig);
         }, null, this);
 

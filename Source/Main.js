@@ -21,7 +21,7 @@ Created a newly designed Title Screen (15)
 S Tier:
 
 Completely redesigned the game's artwork, UI, sound and modified it into a hypewear/hypebeast hip hop aesthetic (50)
-All assets (aside from the sounds) were created by me (Yeezy sprites, Off White Air Jordan 1 sprites, Bling Hand Sprite, "Supreme" UI borders, yeezplosion sprite sheet, Jordan Fire tilesprite)
+All assets (aside from the sounds) were created solely by me (Yeezy sprites, Off White Air Jordan 1 sprites, Bape Logo Sprite, Bling Hand Sprite, "Supreme" UI borders, yeezplosion sprite sheet, Jordan Fire tilesprite)
 
 #FACADE Tier:
 
