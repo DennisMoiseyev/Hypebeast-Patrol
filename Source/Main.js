@@ -25,9 +25,9 @@ All assets (aside from the sounds) were created by me (Yeezy sprites, Off White 
 
 #FACADE Tier:
 
-Implemented a timer that shows elapsed time in seconds during gameplay (10)
+Implemented a timer that shows elapsed time in seconds during gameplay (5)
 I didn't do a timer that counts down once the game has started, but was still able to display the time (in seconds) that the player has in the game.
-This did require more effort in my programming skill and additional code to implement, so I ask for 10 points from this rather than 15 to solidify my 100 points
+This did require more effort in my programming skill and additional code to implement, so I ask 5 points for this mod rather than 15 to solidify my 100 points
 for this assignment.
 
 */
