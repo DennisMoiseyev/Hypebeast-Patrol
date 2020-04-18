@@ -3,6 +3,8 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
+   
+
     preload(){
         //load images, background music beat, and the flame Jordan sprite
         this.load.image("yeezy_two", "./Assets/yeezy.png");
@@ -31,8 +33,8 @@ class Play extends Phaser.Scene{
         this.add.rectangle(603, 5, 32, 455, 0xFF0000).setOrigin(0,0);
         this.add.text(5, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         this.add.text(5, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
-        this.add.text(555, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
-        this.add.text(555, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
+        this.add.text(565, 443, 'Supreme', { fontFamily: '"Roboto Condensed"' });
+        this.add.text(565, 5, 'Supreme', { fontFamily: '"Roboto Condensed"' });
         
         //'Fire' UI text b/c this game is heat
         this.setupFire= this.add.text(278, 54, "🔥🔥FIRE🔥🔥", { fontFamily: "Roboto Condensed", fontSize: "32px", backgroundColor: "#FF0000"}).setOrigin(0.5);
@@ -112,10 +114,10 @@ class Play extends Phaser.Scene{
         }, null, this);
 
         //add time event text
-        this.delayText= this.add.text(245, 18);
-        
+        this.delayText= this.add.text(245, 18);  
 
-        
+        //Add instructions text for player movement while hand suspended in the air
+        this.instructions= this.add.text(330, 400, "Use ←→ to move while in air", { fontFamily: "Roboto Condensed", fontSize: "28px"}).setOrigin(0.5);
     }
 
     update(){
@@ -134,9 +136,7 @@ class Play extends Phaser.Scene{
         //display the time elapsed in seconds on the screen with 's' string at end to indicate seconds are going by
         //Received help from https://stackoverflow.com/questions/56154888/timer-not-working-inside-function-in-phaser-3
         //https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/ (5)
-        this.delayText.setText('Time: ' + this.clock.getElapsedSeconds().toString().substr(0, 4) + "s");
-        
-        
+        this.delayText.setText('Time: ' + Math.floor(this.clock.getElapsedSeconds().toString().substr(0, 4)) + "s");
         
         //update assets as gameplay continues
         if(!this.gameOver){
@@ -145,7 +145,6 @@ class Play extends Phaser.Scene{
         this.yeezy01.update();
         this.yeezy02.update();
         this.yeezy03.update();
-        
         }
 
         //check collisions of shoes and hand, play explosion animation when collided
@@ -191,6 +190,7 @@ class Play extends Phaser.Scene{
             shoe.alpha =1; //make yeezy visible again
             boom.destroy(); //kill animation (remove sprite)
             this.sound.play("money");//play satisfying cha-ching sound effect
+            this.instructions.destroy();//remove the instruction guide for hand movement in the air
 
         });
 
