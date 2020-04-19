@@ -97,9 +97,10 @@ class Play extends Phaser.Scene{
         //present the score on-screen
         this.scoreLeft= this.add.text(10,  35, this.p1score, scoreConfig); 
         this.gameOver= false;
+        this.dollaSign= this.add.text(53,  55, "$", { fontFamily: "Roboto Condensed", fontSize: "28px", backgroundColor: "#FF0000"}).setOrigin(0.5); 
 
         //text setup for the high score (top right hand corner)
-        this.highScoreText= this.add.text(433, 35, "High Score: " + this.p1highScore, {
+        this.highScoreText= this.add.text(461, 35, "Highest: " + "$" + this.p1highScore, {
             fontFamily: "Helvetica",
             fontSize: "28px",
             fill: "white",
@@ -202,7 +203,7 @@ class Play extends Phaser.Scene{
         this.scoreLeft.text = this.p1score;
         //High score tracker; stored via browser's local storage. When score is larger than current high score, update to new high score
         //Additional help from https://stackoverflow.com/questions/37408825/create-a-high-score-in-phaser (10)
-        this.highScoreText.text= "High Score: " + localStorage.getItem("p1highScore");
+        this.highScoreText.text= "Highest: " + "$" + localStorage.getItem("p1highScore");
         {
             if(this.p1score > localStorage.getItem("p1highScore")){
                 
