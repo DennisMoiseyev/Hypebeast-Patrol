@@ -59,7 +59,7 @@ class Play extends Phaser.Scene{
         this.blingHand = new BlingHand(this, game.config.width/2, 420,"hand").setScale(0.5,0.5).setOrigin(0,0);
 
         //create the yeezy enemy sprites in Play Scene
-        this.yeezy01 = new Yeezy(this, game.config.width +200, 44, "yeezy_two", 0, 60).setOrigin(0,0);
+        this.yeezy01 = new Yeezy(this, game.config.width +200, 44, "yeezy_two", 0, 30).setOrigin(0,0);
         this.yeezy02 = new Yeezy(this, game.config.width +96, 110, "yeezy_two", 0, 20).setOrigin(0,0);
         this.yeezy03 = new Yeezy(this, game.config.width, 200, "yeezy_two", 0, 10).setOrigin(0,0);
 
